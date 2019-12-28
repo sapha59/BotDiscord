@@ -1,0 +1,21 @@
+const Discord = require('discord.js');
+const fs = require("fs");
+const client = new Discord.Client();
+var prefix = "!";
+
+client.login(procss.env.TOKEN);
+
+client.on("guildMemberAdd", user =>{
+    user.guild.channels.get("521764837597118464").send("Bienvenue " + user + "sur le serveur **" + user.guild.name + "** !")
+});
+
+client.on("guildMemberRemove", user =>{
+    user.guild.channels.get("521764837597118464").send("Ses Dommage de quitter le serveur" + user.user.username + "a quitté le serveur ! :sob:")
+})
+
+client.on("message", message =>{
+    if(!message.guild) return 
+    if(message.content === prefix + "hello"){
+        message.channel.send("Bonjour " + message.author + "!")
+    }
+});
